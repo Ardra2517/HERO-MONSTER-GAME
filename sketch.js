@@ -9,23 +9,33 @@ var backgroundImg;
 var ground;
 var hero;
 var monster;
+var sling;
+var bgImg;
 
 function preload() {
+ bgImg=loadImage("GamingBackground.png")
 }
 
 function setup() {
-  createCanvas(3000, 800);
+  createCanvas(1000, 500);
   engine = Engine.create();
   world = engine.world;
 
-  ground = new Ground(600,height,1200,20);
-  hero=new Hero(2100,400,50,50);
+  ground = new Ground(500,height,1200,20);
+  hero=new Hero(200,400,100,100);
+  sling= new Fly(hero.body,{x:200, y:50});
+
 }
 
 function draw() {
+  if(bgImg){
+        background(bgImg);
+        }
+    
   Engine.update(engine);
   ground.display();
   hero.display();
+  sling.display();
 }
 
 function mouseDragged(){
@@ -33,5 +43,5 @@ function mouseDragged(){
 }
 
 function mouseReleased(){
-  slingshot.fly();
+  sling.flying();
 }
