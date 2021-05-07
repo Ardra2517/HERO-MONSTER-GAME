@@ -20,11 +20,13 @@ function setup() {
   createCanvas(1000, 500);
   engine = Engine.create();
   world = engine.world;
-
+  
+  box1 = new Box(400,700,30,20);
   ground = new Ground(500,height,1200,20);
   hero=new Hero(200,400,100,100);
   sling= new Fly(hero.body,{x:200, y:50});
 
+  
 }
 
 function draw() {
@@ -36,6 +38,7 @@ function draw() {
   ground.display();
   hero.display();
   sling.display();
+  box1.display();
 }
 
 function mouseDragged(){
